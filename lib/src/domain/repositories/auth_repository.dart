@@ -30,6 +30,13 @@ abstract interface class AuthRepository {
     required String password,
   });
 
+  /// v2 초대/활성화 토큰으로 계정을 활성화한다.
+  Future<bool> activateV2({
+    required String token,
+    required String password,
+    required String username,
+  });
+
   /// v2 refresh token으로 access token을 재발급한다.
   Future<String> refreshV2();
 
@@ -61,4 +68,10 @@ abstract interface class AuthRepository {
   Future<AuthUser> lookupUserByPublicCodeV2({
     required String code,
   });
+
+  /// v2 ping 응답을 조회한다.
+  Future<Map<String, String>> pingV2();
+
+  /// v2 ping error 응답을 조회한다.
+  Future<String> pingErrorV2();
 }

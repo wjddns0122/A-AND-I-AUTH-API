@@ -201,6 +201,26 @@ final loginV2UseCaseProvider = AutoDisposeProvider<LoginV2UseCase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LoginV2UseCaseRef = AutoDisposeProviderRef<LoginV2UseCase>;
+String _$activateV2UseCaseHash() => r'3adf38794ccecf026652d771b3e6d647f4e9d251';
+
+/// v2 계정 활성화 유스케이스 provider.
+///
+/// Copied from [activateV2UseCase].
+@ProviderFor(activateV2UseCase)
+final activateV2UseCaseProvider =
+    AutoDisposeProvider<ActivateV2UseCase>.internal(
+      activateV2UseCase,
+      name: r'activateV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$activateV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ActivateV2UseCaseRef = AutoDisposeProviderRef<ActivateV2UseCase>;
 String _$refreshV2UseCaseHash() => r'115942ecedc60b1b870e32780df7e658a132b244';
 
 /// v2 토큰 재발급 유스케이스 provider.
@@ -346,5 +366,45 @@ final lookupUserByPublicCodeV2UseCaseProvider =
 // ignore: unused_element
 typedef LookupUserByPublicCodeV2UseCaseRef =
     AutoDisposeProviderRef<LookupUserByPublicCodeV2UseCase>;
+String _$pingV2UseCaseHash() => r'b9edcc2856967e5013721ee755890042847192a2';
+
+/// v2 ping 유스케이스 provider.
+///
+/// Copied from [pingV2UseCase].
+@ProviderFor(pingV2UseCase)
+final pingV2UseCaseProvider = AutoDisposeProvider<PingV2UseCase>.internal(
+  pingV2UseCase,
+  name: r'pingV2UseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$pingV2UseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PingV2UseCaseRef = AutoDisposeProviderRef<PingV2UseCase>;
+String _$pingErrorV2UseCaseHash() =>
+    r'62a8ca73746f440b0e769b11549e8f88b6cf5f0a';
+
+/// v2 ping error 유스케이스 provider.
+///
+/// Copied from [pingErrorV2UseCase].
+@ProviderFor(pingErrorV2UseCase)
+final pingErrorV2UseCaseProvider =
+    AutoDisposeProvider<PingErrorV2UseCase>.internal(
+      pingErrorV2UseCase,
+      name: r'pingErrorV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$pingErrorV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PingErrorV2UseCaseRef = AutoDisposeProviderRef<PingErrorV2UseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

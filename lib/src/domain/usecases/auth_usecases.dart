@@ -65,6 +65,25 @@ final class LoginV2UseCase {
   }
 }
 
+/// v2 계정 활성화 유스케이스.
+final class ActivateV2UseCase {
+  const ActivateV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<bool> call({
+    required String token,
+    required String password,
+    required String username,
+  }) {
+    return _repository.activateV2(
+      token: token,
+      password: password,
+      username: username,
+    );
+  }
+}
+
 /// v2 access token 재발급 유스케이스.
 final class RefreshV2UseCase {
   const RefreshV2UseCase(this._repository);
@@ -152,4 +171,22 @@ final class LookupUserByPublicCodeV2UseCase {
   Future<AuthUser> call({required String code}) {
     return _repository.lookupUserByPublicCodeV2(code: code);
   }
+}
+
+/// v2 ping 조회 유스케이스.
+final class PingV2UseCase {
+  const PingV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<Map<String, String>> call() => _repository.pingV2();
+}
+
+/// v2 ping error 조회 유스케이스.
+final class PingErrorV2UseCase {
+  const PingErrorV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<String> call() => _repository.pingErrorV2();
 }

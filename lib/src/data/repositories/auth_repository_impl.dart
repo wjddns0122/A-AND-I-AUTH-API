@@ -120,6 +120,22 @@ final class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<bool> activateV2({
+    required String token,
+    required String password,
+    required String username,
+  }) async {
+    final response = await _apiClient.activateV2(
+      ActivateV2RequestDto(
+        token: token,
+        password: password,
+        username: username,
+      ),
+    );
+    return response.activated;
+  }
+
+  @override
   Future<String> refreshV2() async {
     final current = await _tokenStore.read();
     final refreshToken = current?.refreshToken;
@@ -224,6 +240,16 @@ final class AuthRepositoryImpl implements AuthRepository {
       accessToken: accessToken,
     );
     return response.toDomain();
+  }
+
+  @override
+  Future<Map<String, String>> pingV2() {
+    return _apiClient.pingV2();
+  }
+
+  @override
+  Future<String> pingErrorV2() {
+    return _apiClient.pingErrorV2();
   }
 
   /// 인증이 필요한 API 호출 전에 access token 존재 여부를 보장한다.

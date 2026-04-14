@@ -73,6 +73,12 @@ final class AuthApiClient {
     return LoginResponseDto.fromJson(payload);
   }
 
+  /// `/v2/activate` 호출.
+  Future<ActivateV2ResponseDto> activateV2(ActivateV2RequestDto request) async {
+    final payload = await _postV2('/v2/activate', body: request.toJson());
+    return ActivateV2ResponseDto.fromJson(payload);
+  }
+
   /// `/v2/auth/refresh` 호출.
   Future<RefreshResponseDto> refreshV2(RefreshRequestDto request) async {
     final payload = await _postV2('/v2/auth/refresh', body: request.toJson());
@@ -143,6 +149,25 @@ final class AuthApiClient {
     return UserLookupV2ResponseDto.fromJson(payload);
   }
 
+  /// `/v2/ping` 호출.
+  Future<Map<String, String>> pingV2() async {
+    final payload = await _getV2('/v2/ping');
+    return payload.map(
+      (key, value) => MapEntry(key, value?.toString() ?? ''),
+    );
+  }
+
+  /// `/v2/ping/error` 호출.
+  Future<String> pingErrorV2() async {
+    final uri = Uri.parse('$baseUrl/v2/ping/error');
+    final response = await _client.get(uri, headers: _headersV2(null));
+    final value = _decodeEnvelopeV2(response);
+    if (value is String) {
+      return value;
+    }
+    return value?.toString() ?? '';
+  }
+
   Future<Map<String, dynamic>> _post(
     String path, {
     required Map<String, dynamic> body,
@@ -174,7 +199,7 @@ final class AuthApiClient {
       headers: _headersV2(accessToken),
       body: jsonEncode(body),
     );
-    return _decodeEnvelopeV2(response);
+    return _decodeEnvelopeV2Map(response);
   }
 
   Future<Map<String, dynamic>> _patchV2(
@@ -188,12 +213,12 @@ final class AuthApiClient {
       headers: _headersV2(accessToken),
       body: jsonEncode(body),
     );
-    return _decodeEnvelopeV2(response);
+    return _decodeEnvelopeV2Map(response);
   }
 
   Future<Map<String, dynamic>> _getV2(
     String path, {
-    required String accessToken,
+    String? accessToken,
     Map<String, String>? queryParameters,
   }) async {
     final baseUri = Uri.parse('$baseUrl$path');
@@ -202,7 +227,7 @@ final class AuthApiClient {
             ? baseUri
             : baseUri.replace(queryParameters: queryParameters);
     final response = await _client.get(uri, headers: _headersV2(accessToken));
-    return _decodeEnvelopeV2(response);
+    return _decodeEnvelopeV2Map(response);
   }
 
   Map<String, String> _headers(String? accessToken) {
@@ -263,7 +288,19 @@ final class AuthApiClient {
   }
 
   /// v2 서버 응답을 공통 envelope 규칙에 맞게 검증/파싱한다.
-  Map<String, dynamic> _decodeEnvelopeV2(http.Response response) {
+  Map<String, dynamic> _decodeEnvelopeV2Map(http.Response response) {
+    final data = _decodeEnvelopeV2(response);
+    if (data is! Map<String, dynamic>) {
+      throw AuthApiException(
+        'Response data is missing',
+        statusCode: response.statusCode,
+      );
+    }
+    return data;
+  }
+
+  /// v2 서버 응답을 공통 envelope 규칙에 맞게 검증/파싱한다.
+  Object? _decodeEnvelopeV2(http.Response response) {
     final decoded = jsonDecode(response.body);
     if (decoded is! Map<String, dynamic>) {
       throw AuthApiException(
@@ -284,14 +321,6 @@ final class AuthApiClient {
         alert: envelope.error?.alert,
       );
     }
-
-    final data = envelope.data;
-    if (data is! Map<String, dynamic>) {
-      throw AuthApiException(
-        'Response data is missing',
-        statusCode: response.statusCode,
-      );
-    }
-    return data;
+    return envelope.data;
   }
 }

@@ -265,3 +265,27 @@ Map<String, dynamic> _$UserLookupV2ResponseDtoToJson(
   'nickname': instance.nickname,
   'profileImageUrl': instance.profileImageUrl,
 };
+
+_ActivateV2RequestDto _$ActivateV2RequestDtoFromJson(
+  Map<String, dynamic> json,
+) => _ActivateV2RequestDto(
+  token: json['token'] as String,
+  password: json['password'] as String,
+  username: json['username'] as String,
+);
+
+Map<String, dynamic> _$ActivateV2RequestDtoToJson(
+  _ActivateV2RequestDto instance,
+) => <String, dynamic>{
+  'token': instance.token,
+  'password': instance.password,
+  'username': instance.username,
+};
+
+_ActivateV2ResponseDto _$ActivateV2ResponseDtoFromJson(
+  Map<String, dynamic> json,
+) => _ActivateV2ResponseDto(activated: json['activated'] as bool);
+
+Map<String, dynamic> _$ActivateV2ResponseDtoToJson(
+  _ActivateV2ResponseDto instance,
+) => <String, dynamic>{'activated': instance.activated};

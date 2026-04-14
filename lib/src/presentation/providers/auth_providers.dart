@@ -84,6 +84,12 @@ LoginV2UseCase loginV2UseCase(Ref ref) {
   return LoginV2UseCase(ref.watch(authRepositoryProvider));
 }
 
+/// v2 계정 활성화 유스케이스 provider.
+@riverpod
+ActivateV2UseCase activateV2UseCase(Ref ref) {
+  return ActivateV2UseCase(ref.watch(authRepositoryProvider));
+}
+
 /// v2 토큰 재발급 유스케이스 provider.
 @riverpod
 RefreshV2UseCase refreshV2UseCase(Ref ref) {
@@ -128,4 +134,16 @@ RequestProfileImageUploadUrlV2UseCase requestProfileImageUploadUrlV2UseCase(
 @riverpod
 LookupUserByPublicCodeV2UseCase lookupUserByPublicCodeV2UseCase(Ref ref) {
   return LookupUserByPublicCodeV2UseCase(ref.watch(authRepositoryProvider));
+}
+
+/// v2 ping 유스케이스 provider.
+@riverpod
+PingV2UseCase pingV2UseCase(Ref ref) {
+  return PingV2UseCase(ref.watch(authRepositoryProvider));
+}
+
+/// v2 ping error 유스케이스 provider.
+@riverpod
+PingErrorV2UseCase pingErrorV2UseCase(Ref ref) {
+  return PingErrorV2UseCase(ref.watch(authRepositoryProvider));
 }

@@ -4918,4 +4918,536 @@ as String?,
 
 }
 
+
+/// @nodoc
+mixin _$ActivateV2RequestDto {
+
+ String get token; String get password; String get username;
+/// Create a copy of ActivateV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ActivateV2RequestDtoCopyWith<ActivateV2RequestDto> get copyWith => _$ActivateV2RequestDtoCopyWithImpl<ActivateV2RequestDto>(this as ActivateV2RequestDto, _$identity);
+
+  /// Serializes this ActivateV2RequestDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ActivateV2RequestDto&&(identical(other.token, token) || other.token == token)&&(identical(other.password, password) || other.password == password)&&(identical(other.username, username) || other.username == username));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,token,password,username);
+
+@override
+String toString() {
+  return 'ActivateV2RequestDto(token: $token, password: $password, username: $username)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ActivateV2RequestDtoCopyWith<$Res>  {
+  factory $ActivateV2RequestDtoCopyWith(ActivateV2RequestDto value, $Res Function(ActivateV2RequestDto) _then) = _$ActivateV2RequestDtoCopyWithImpl;
+@useResult
+$Res call({
+ String token, String password, String username
+});
+
+
+
+
+}
+/// @nodoc
+class _$ActivateV2RequestDtoCopyWithImpl<$Res>
+    implements $ActivateV2RequestDtoCopyWith<$Res> {
+  _$ActivateV2RequestDtoCopyWithImpl(this._self, this._then);
+
+  final ActivateV2RequestDto _self;
+  final $Res Function(ActivateV2RequestDto) _then;
+
+/// Create a copy of ActivateV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? token = null,Object? password = null,Object? username = null,}) {
+  return _then(_self.copyWith(
+token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ActivateV2RequestDto].
+extension ActivateV2RequestDtoPatterns on ActivateV2RequestDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ActivateV2RequestDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ActivateV2RequestDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ActivateV2RequestDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token,  String password,  String username)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto() when $default != null:
+return $default(_that.token,_that.password,_that.username);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token,  String password,  String username)  $default,) {final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto():
+return $default(_that.token,_that.password,_that.username);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token,  String password,  String username)?  $default,) {final _that = this;
+switch (_that) {
+case _ActivateV2RequestDto() when $default != null:
+return $default(_that.token,_that.password,_that.username);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ActivateV2RequestDto implements ActivateV2RequestDto {
+  const _ActivateV2RequestDto({required this.token, required this.password, required this.username});
+  factory _ActivateV2RequestDto.fromJson(Map<String, dynamic> json) => _$ActivateV2RequestDtoFromJson(json);
+
+@override final  String token;
+@override final  String password;
+@override final  String username;
+
+/// Create a copy of ActivateV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ActivateV2RequestDtoCopyWith<_ActivateV2RequestDto> get copyWith => __$ActivateV2RequestDtoCopyWithImpl<_ActivateV2RequestDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ActivateV2RequestDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ActivateV2RequestDto&&(identical(other.token, token) || other.token == token)&&(identical(other.password, password) || other.password == password)&&(identical(other.username, username) || other.username == username));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,token,password,username);
+
+@override
+String toString() {
+  return 'ActivateV2RequestDto(token: $token, password: $password, username: $username)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ActivateV2RequestDtoCopyWith<$Res> implements $ActivateV2RequestDtoCopyWith<$Res> {
+  factory _$ActivateV2RequestDtoCopyWith(_ActivateV2RequestDto value, $Res Function(_ActivateV2RequestDto) _then) = __$ActivateV2RequestDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String token, String password, String username
+});
+
+
+
+
+}
+/// @nodoc
+class __$ActivateV2RequestDtoCopyWithImpl<$Res>
+    implements _$ActivateV2RequestDtoCopyWith<$Res> {
+  __$ActivateV2RequestDtoCopyWithImpl(this._self, this._then);
+
+  final _ActivateV2RequestDto _self;
+  final $Res Function(_ActivateV2RequestDto) _then;
+
+/// Create a copy of ActivateV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? token = null,Object? password = null,Object? username = null,}) {
+  return _then(_ActivateV2RequestDto(
+token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ActivateV2ResponseDto {
+
+ bool get activated;
+/// Create a copy of ActivateV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ActivateV2ResponseDtoCopyWith<ActivateV2ResponseDto> get copyWith => _$ActivateV2ResponseDtoCopyWithImpl<ActivateV2ResponseDto>(this as ActivateV2ResponseDto, _$identity);
+
+  /// Serializes this ActivateV2ResponseDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ActivateV2ResponseDto&&(identical(other.activated, activated) || other.activated == activated));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,activated);
+
+@override
+String toString() {
+  return 'ActivateV2ResponseDto(activated: $activated)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ActivateV2ResponseDtoCopyWith<$Res>  {
+  factory $ActivateV2ResponseDtoCopyWith(ActivateV2ResponseDto value, $Res Function(ActivateV2ResponseDto) _then) = _$ActivateV2ResponseDtoCopyWithImpl;
+@useResult
+$Res call({
+ bool activated
+});
+
+
+
+
+}
+/// @nodoc
+class _$ActivateV2ResponseDtoCopyWithImpl<$Res>
+    implements $ActivateV2ResponseDtoCopyWith<$Res> {
+  _$ActivateV2ResponseDtoCopyWithImpl(this._self, this._then);
+
+  final ActivateV2ResponseDto _self;
+  final $Res Function(ActivateV2ResponseDto) _then;
+
+/// Create a copy of ActivateV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? activated = null,}) {
+  return _then(_self.copyWith(
+activated: null == activated ? _self.activated : activated // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ActivateV2ResponseDto].
+extension ActivateV2ResponseDtoPatterns on ActivateV2ResponseDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ActivateV2ResponseDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ActivateV2ResponseDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ActivateV2ResponseDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool activated)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto() when $default != null:
+return $default(_that.activated);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool activated)  $default,) {final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto():
+return $default(_that.activated);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool activated)?  $default,) {final _that = this;
+switch (_that) {
+case _ActivateV2ResponseDto() when $default != null:
+return $default(_that.activated);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ActivateV2ResponseDto implements ActivateV2ResponseDto {
+  const _ActivateV2ResponseDto({required this.activated});
+  factory _ActivateV2ResponseDto.fromJson(Map<String, dynamic> json) => _$ActivateV2ResponseDtoFromJson(json);
+
+@override final  bool activated;
+
+/// Create a copy of ActivateV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ActivateV2ResponseDtoCopyWith<_ActivateV2ResponseDto> get copyWith => __$ActivateV2ResponseDtoCopyWithImpl<_ActivateV2ResponseDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ActivateV2ResponseDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ActivateV2ResponseDto&&(identical(other.activated, activated) || other.activated == activated));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,activated);
+
+@override
+String toString() {
+  return 'ActivateV2ResponseDto(activated: $activated)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ActivateV2ResponseDtoCopyWith<$Res> implements $ActivateV2ResponseDtoCopyWith<$Res> {
+  factory _$ActivateV2ResponseDtoCopyWith(_ActivateV2ResponseDto value, $Res Function(_ActivateV2ResponseDto) _then) = __$ActivateV2ResponseDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ bool activated
+});
+
+
+
+
+}
+/// @nodoc
+class __$ActivateV2ResponseDtoCopyWithImpl<$Res>
+    implements _$ActivateV2ResponseDtoCopyWith<$Res> {
+  __$ActivateV2ResponseDtoCopyWithImpl(this._self, this._then);
+
+  final _ActivateV2ResponseDto _self;
+  final $Res Function(_ActivateV2ResponseDto) _then;
+
+/// Create a copy of ActivateV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? activated = null,}) {
+  return _then(_ActivateV2ResponseDto(
+activated: null == activated ? _self.activated : activated // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
 // dart format on

@@ -264,3 +264,28 @@ abstract class UserLookupV2ResponseDto with _$UserLookupV2ResponseDto {
   factory UserLookupV2ResponseDto.fromJson(Map<String, dynamic> json) =>
       _$UserLookupV2ResponseDtoFromJson(json);
 }
+
+/// v2 계정 활성화 요청 DTO.
+@freezed
+abstract class ActivateV2RequestDto with _$ActivateV2RequestDto {
+  const factory ActivateV2RequestDto({
+    required String token,
+    required String password,
+    required String username,
+  }) = _ActivateV2RequestDto;
+
+  /// JSON 역직렬화.
+  factory ActivateV2RequestDto.fromJson(Map<String, dynamic> json) =>
+      _$ActivateV2RequestDtoFromJson(json);
+}
+
+/// v2 계정 활성화 응답 DTO.
+@freezed
+abstract class ActivateV2ResponseDto with _$ActivateV2ResponseDto {
+  const factory ActivateV2ResponseDto({required bool activated}) =
+      _ActivateV2ResponseDto;
+
+  /// JSON 역직렬화.
+  factory ActivateV2ResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$ActivateV2ResponseDtoFromJson(json);
+}
