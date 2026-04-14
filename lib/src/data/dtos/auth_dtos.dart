@@ -23,6 +23,21 @@ abstract class ApiErrorDto with _$ApiErrorDto {
       _$ApiErrorDtoFromJson(json);
 }
 
+/// v2 API 오류 페이로드 DTO.
+@freezed
+abstract class ApiErrorV2Dto with _$ApiErrorV2Dto {
+  const factory ApiErrorV2Dto({
+    int? code,
+    String? message,
+    String? value,
+    String? alert,
+  }) = _ApiErrorV2Dto;
+
+  /// JSON 역직렬화.
+  factory ApiErrorV2Dto.fromJson(Map<String, dynamic> json) =>
+      _$ApiErrorV2DtoFromJson(json);
+}
+
 /// 로그인 요청 DTO.
 @freezed
 abstract class LoginRequestDto with _$LoginRequestDto {
@@ -65,6 +80,7 @@ abstract class LoginUserDto with _$LoginUserDto {
     required String id,
     required String username,
     required AuthRoleDto role,
+    String? publicCode,
   }) = _LoginUserDto;
 
   /// JSON 역직렬화.
@@ -80,6 +96,7 @@ abstract class LoginResponseDto with _$LoginResponseDto {
     required String refreshToken,
     required int expiresIn,
     String? tokenType,
+    @Default(false) bool forcePasswordChange,
     required LoginUserDto user,
   }) = _LoginResponseDto;
 
@@ -118,6 +135,10 @@ abstract class MeResponseDto with _$MeResponseDto {
     required String id,
     required String username,
     required AuthRoleDto role,
+    String? userTrack,
+    String? publicCode,
+    String? nickname,
+    String? profileImageUrl,
   }) = _MeResponseDto;
 
   /// JSON 역직렬화.
@@ -141,4 +162,75 @@ abstract class ApiEnvelopeDto with _$ApiEnvelopeDto {
   /// JSON 역직렬화.
   factory ApiEnvelopeDto.fromJson(Map<String, dynamic> json) =>
       _$ApiEnvelopeDtoFromJson(json);
+}
+
+/// v2 API 공통 응답 envelope DTO.
+@freezed
+abstract class ApiEnvelopeV2Dto with _$ApiEnvelopeV2Dto {
+  const factory ApiEnvelopeV2Dto({
+    required bool success,
+    Object? data,
+    ApiErrorV2Dto? error,
+    DateTime? timestamp,
+  }) = _ApiEnvelopeV2Dto;
+
+  /// JSON 역직렬화.
+  factory ApiEnvelopeV2Dto.fromJson(Map<String, dynamic> json) =>
+      _$ApiEnvelopeV2DtoFromJson(json);
+}
+
+/// v2 비밀번호 변경 요청 DTO.
+@freezed
+abstract class ChangePasswordV2RequestDto with _$ChangePasswordV2RequestDto {
+  const factory ChangePasswordV2RequestDto({
+    required String currentPassword,
+    required String newPassword,
+  }) = _ChangePasswordV2RequestDto;
+
+  /// JSON 역직렬화.
+  factory ChangePasswordV2RequestDto.fromJson(Map<String, dynamic> json) =>
+      _$ChangePasswordV2RequestDtoFromJson(json);
+}
+
+/// v2 비밀번호 변경 응답 DTO.
+@freezed
+abstract class ChangePasswordV2ResponseDto with _$ChangePasswordV2ResponseDto {
+  const factory ChangePasswordV2ResponseDto({required bool changed}) =
+      _ChangePasswordV2ResponseDto;
+
+  /// JSON 역직렬화.
+  factory ChangePasswordV2ResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$ChangePasswordV2ResponseDtoFromJson(json);
+}
+
+/// v2 프로필 이미지 업로드 URL 발급 요청 DTO.
+@freezed
+abstract class ProfileImageUploadUrlV2RequestDto
+    with _$ProfileImageUploadUrlV2RequestDto {
+  const factory ProfileImageUploadUrlV2RequestDto({
+    required String contentType,
+    required String fileName,
+  }) = _ProfileImageUploadUrlV2RequestDto;
+
+  /// JSON 역직렬화.
+  factory ProfileImageUploadUrlV2RequestDto.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ProfileImageUploadUrlV2RequestDtoFromJson(json);
+}
+
+/// v2 프로필 이미지 업로드 URL 발급 응답 DTO.
+@freezed
+abstract class ProfileImageUploadUrlV2ResponseDto
+    with _$ProfileImageUploadUrlV2ResponseDto {
+  const factory ProfileImageUploadUrlV2ResponseDto({
+    required String uploadUrl,
+    required String profileImageUrl,
+    required String objectKey,
+    required int expiresInSeconds,
+  }) = _ProfileImageUploadUrlV2ResponseDto;
+
+  /// JSON 역직렬화.
+  factory ProfileImageUploadUrlV2ResponseDto.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ProfileImageUploadUrlV2ResponseDtoFromJson(json);
 }
