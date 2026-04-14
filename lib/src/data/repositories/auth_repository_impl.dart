@@ -1,3 +1,4 @@
+import '../../domain/entities/auth_profile_image_upload.dart';
 import '../../domain/entities/auth_role.dart';
 import '../../domain/entities/auth_session.dart';
 import '../../domain/entities/auth_tokens.dart';
@@ -41,7 +42,11 @@ final class AuthRepositoryImpl implements AuthRepository {
     );
     await _tokenStore.save(tokens);
 
-    return AuthSession(user: response.user.toDomain(), tokens: tokens);
+    return AuthSession(
+      user: response.user.toDomain(),
+      tokens: tokens,
+      forcePasswordChange: response.forcePasswordChange,
+    );
   }
 
   @override
@@ -90,6 +95,111 @@ final class AuthRepositoryImpl implements AuthRepository {
     return response.toDomain();
   }
 
+  @override
+  Future<AuthSession> loginV2({
+    required String username,
+    required String password,
+  }) async {
+    final response = await _apiClient.loginV2(
+      LoginRequestDto(username: username, password: password),
+    );
+
+    final tokens = AuthTokens(
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
+      expiresIn: response.expiresIn,
+      tokenType: response.tokenType,
+    );
+    await _tokenStore.save(tokens);
+
+    return AuthSession(
+      user: response.user.toDomain(),
+      tokens: tokens,
+      forcePasswordChange: response.forcePasswordChange,
+    );
+  }
+
+  @override
+  Future<String> refreshV2() async {
+    final current = await _tokenStore.read();
+    final refreshToken = current?.refreshToken;
+    if (refreshToken == null || refreshToken.isEmpty) {
+      throw AuthApiException('Refresh token is missing. Please log in again.');
+    }
+
+    final response = await _apiClient.refreshV2(
+      RefreshRequestDto(refreshToken: refreshToken),
+    );
+
+    final nextTokens = AuthTokens(
+      accessToken: response.accessToken,
+      refreshToken: refreshToken,
+      expiresIn: response.expiresIn,
+      tokenType: current?.tokenType,
+    );
+    await _tokenStore.save(nextTokens);
+
+    return nextTokens.accessToken;
+  }
+
+  @override
+  Future<void> logoutV2() async {
+    final current = await _tokenStore.read();
+    final refreshToken = current?.refreshToken;
+    try {
+      if (refreshToken != null && refreshToken.isNotEmpty) {
+        await _apiClient.logoutV2(LogoutRequestDto(refreshToken: refreshToken));
+      }
+    } finally {
+      await _tokenStore.clear();
+    }
+  }
+
+  @override
+  Future<AuthUser> meV2() async {
+    final accessToken = await _requireAccessToken();
+    final response = await _apiClient.meV2(accessToken: accessToken);
+    return response.toDomain();
+  }
+
+  @override
+  Future<bool> changePasswordV2({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final accessToken = await _requireAccessToken();
+    final response = await _apiClient.changePasswordV2(
+      ChangePasswordV2RequestDto(
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+      ),
+      accessToken: accessToken,
+    );
+    return response.changed;
+  }
+
+  @override
+  Future<AuthProfileImageUpload> requestProfileImageUploadUrlV2({
+    required String contentType,
+    required String fileName,
+  }) async {
+    final accessToken = await _requireAccessToken();
+    final response = await _apiClient.requestProfileImageUploadUrlV2(
+      ProfileImageUploadUrlV2RequestDto(
+        contentType: contentType,
+        fileName: fileName,
+      ),
+      accessToken: accessToken,
+    );
+
+    return AuthProfileImageUpload(
+      uploadUrl: response.uploadUrl,
+      profileImageUrl: response.profileImageUrl,
+      objectKey: response.objectKey,
+      expiresInSeconds: response.expiresInSeconds,
+    );
+  }
+
   /// 인증이 필요한 API 호출 전에 access token 존재 여부를 보장한다.
   Future<String> _requireAccessToken() async {
     final tokens = await _tokenStore.read();
@@ -103,14 +213,27 @@ final class AuthRepositoryImpl implements AuthRepository {
 extension on LoginUserDto {
   /// 로그인 응답 사용자 DTO -> 도메인 엔티티 변환.
   AuthUser toDomain() {
-    return AuthUser(id: id, username: username, role: _mapRole(role));
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
+      publicCode: publicCode,
+    );
   }
 }
 
 extension on MeResponseDto {
   /// 내 정보 응답 DTO -> 도메인 엔티티 변환.
   AuthUser toDomain() {
-    return AuthUser(id: id, username: username, role: _mapRole(role));
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
+      userTrack: userTrack,
+      publicCode: publicCode,
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
   }
 }
 

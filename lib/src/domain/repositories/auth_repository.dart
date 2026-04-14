@@ -1,3 +1,4 @@
+import '../entities/auth_profile_image_upload.dart';
 import '../entities/auth_session.dart';
 import '../entities/auth_user.dart';
 
@@ -22,4 +23,31 @@ abstract interface class AuthRepository {
 
   /// 현재 access token 기준으로 내 사용자 정보를 조회한다.
   Future<AuthUser> me();
+
+  /// v2 로그인 후 사용자 정보와 토큰을 반환한다.
+  Future<AuthSession> loginV2({
+    required String username,
+    required String password,
+  });
+
+  /// v2 refresh token으로 access token을 재발급한다.
+  Future<String> refreshV2();
+
+  /// v2 로그아웃을 수행한다.
+  Future<void> logoutV2();
+
+  /// v2 내 사용자 정보를 조회한다.
+  Future<AuthUser> meV2();
+
+  /// v2 비밀번호를 변경한다.
+  Future<bool> changePasswordV2({
+    required String currentPassword,
+    required String newPassword,
+  });
+
+  /// v2 프로필 이미지 업로드 URL을 발급한다.
+  Future<AuthProfileImageUpload> requestProfileImageUploadUrlV2({
+    required String contentType,
+    required String fileName,
+  });
 }

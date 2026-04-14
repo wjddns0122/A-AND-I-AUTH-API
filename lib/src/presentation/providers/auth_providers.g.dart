@@ -6,9 +6,13 @@ part of 'auth_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authBaseUrlHash() => r'19c449511f3bf9a05719f28932c985c6a411cb24';
+String _$authBaseUrlHash() => r'2fb02dbd84da7965ccb6334a16a4072e9d1f2402';
 
-/// See also [authBaseUrl].
+/// 인증 API 베이스 URL provider.
+///
+/// 빌드 타임 `--dart-define=API_URL=...`로 오버라이드할 수 있다.
+///
+/// Copied from [authBaseUrl].
 @ProviderFor(authBaseUrl)
 final authBaseUrlProvider = Provider<String>.internal(
   authBaseUrl,
@@ -23,9 +27,33 @@ final authBaseUrlProvider = Provider<String>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthBaseUrlRef = ProviderRef<String>;
+String _$authDeviceOsHash() => r'b7fa86c6b52e54000231b1aa0f851a106a4b5f75';
+
+/// 인증 요청 시 사용할 디바이스 OS provider.
+///
+/// Copied from [authDeviceOs].
+@ProviderFor(authDeviceOs)
+final authDeviceOsProvider = Provider<String>.internal(
+  authDeviceOs,
+  name: r'authDeviceOsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$authDeviceOsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthDeviceOsRef = ProviderRef<String>;
 String _$tokenStoreHash() => r'd7cbea745a0b59dd6c94127a267f348fa8bf5c26';
 
-/// See also [tokenStore].
+/// 토큰 저장소 provider.
+///
+/// 기본 구현은 인메모리 저장소이며, 앱 레벨에서 override해
+/// secure storage 기반 구현으로 교체 가능하다.
+///
+/// Copied from [tokenStore].
 @ProviderFor(tokenStore)
 final tokenStoreProvider = Provider<TokenStore>.internal(
   tokenStore,
@@ -40,9 +68,11 @@ final tokenStoreProvider = Provider<TokenStore>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TokenStoreRef = ProviderRef<TokenStore>;
-String _$authApiClientHash() => r'a7f3b9e4a4411dfdbb4dd32a38068cc9a70c59a3';
+String _$authApiClientHash() => r'670b7bf0ee7ebf5de8c65dd8eb336a8111fcca6d';
 
-/// See also [authApiClient].
+/// 인증 API 클라이언트 provider.
+///
+/// Copied from [authApiClient].
 @ProviderFor(authApiClient)
 final authApiClientProvider = AutoDisposeProvider<AuthApiClient>.internal(
   authApiClient,
@@ -59,7 +89,9 @@ final authApiClientProvider = AutoDisposeProvider<AuthApiClient>.internal(
 typedef AuthApiClientRef = AutoDisposeProviderRef<AuthApiClient>;
 String _$authRepositoryHash() => r'b60dbcd5cac9a1e22aa3fc55a4073f278abf034f';
 
-/// See also [authRepository].
+/// 인증 리포지토리 provider.
+///
+/// Copied from [authRepository].
 @ProviderFor(authRepository)
 final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
   authRepository,
@@ -76,7 +108,9 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$loginUseCaseHash() => r'e082833fd1fc26be8c5fac08d612713cb2c18a17';
 
-/// See also [loginUseCase].
+/// 로그인 유스케이스 provider.
+///
+/// Copied from [loginUseCase].
 @ProviderFor(loginUseCase)
 final loginUseCaseProvider = AutoDisposeProvider<LoginUseCase>.internal(
   loginUseCase,
@@ -93,7 +127,9 @@ final loginUseCaseProvider = AutoDisposeProvider<LoginUseCase>.internal(
 typedef LoginUseCaseRef = AutoDisposeProviderRef<LoginUseCase>;
 String _$refreshUseCaseHash() => r'30319599055ab80bf49e660980d612b917cb6511';
 
-/// See also [refreshUseCase].
+/// 토큰 재발급 유스케이스 provider.
+///
+/// Copied from [refreshUseCase].
 @ProviderFor(refreshUseCase)
 final refreshUseCaseProvider = AutoDisposeProvider<RefreshUseCase>.internal(
   refreshUseCase,
@@ -110,7 +146,9 @@ final refreshUseCaseProvider = AutoDisposeProvider<RefreshUseCase>.internal(
 typedef RefreshUseCaseRef = AutoDisposeProviderRef<RefreshUseCase>;
 String _$logoutUseCaseHash() => r'2b963e9e0eff2155f687d45b1b5c652ddb695d62';
 
-/// See also [logoutUseCase].
+/// 로그아웃 유스케이스 provider.
+///
+/// Copied from [logoutUseCase].
 @ProviderFor(logoutUseCase)
 final logoutUseCaseProvider = AutoDisposeProvider<LogoutUseCase>.internal(
   logoutUseCase,
@@ -127,7 +165,9 @@ final logoutUseCaseProvider = AutoDisposeProvider<LogoutUseCase>.internal(
 typedef LogoutUseCaseRef = AutoDisposeProviderRef<LogoutUseCase>;
 String _$meUseCaseHash() => r'43e0daa532516bc97645657cd4ac81ec8736eebe';
 
-/// See also [meUseCase].
+/// 내 정보 조회 유스케이스 provider.
+///
+/// Copied from [meUseCase].
 @ProviderFor(meUseCase)
 final meUseCaseProvider = AutoDisposeProvider<MeUseCase>.internal(
   meUseCase,
@@ -142,5 +182,125 @@ final meUseCaseProvider = AutoDisposeProvider<MeUseCase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MeUseCaseRef = AutoDisposeProviderRef<MeUseCase>;
+String _$loginV2UseCaseHash() => r'0bb97f5ba3b836b1a1dd1aebd52bd8b7f053d094';
+
+/// v2 로그인 유스케이스 provider.
+///
+/// Copied from [loginV2UseCase].
+@ProviderFor(loginV2UseCase)
+final loginV2UseCaseProvider = AutoDisposeProvider<LoginV2UseCase>.internal(
+  loginV2UseCase,
+  name: r'loginV2UseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$loginV2UseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LoginV2UseCaseRef = AutoDisposeProviderRef<LoginV2UseCase>;
+String _$refreshV2UseCaseHash() => r'115942ecedc60b1b870e32780df7e658a132b244';
+
+/// v2 토큰 재발급 유스케이스 provider.
+///
+/// Copied from [refreshV2UseCase].
+@ProviderFor(refreshV2UseCase)
+final refreshV2UseCaseProvider = AutoDisposeProvider<RefreshV2UseCase>.internal(
+  refreshV2UseCase,
+  name: r'refreshV2UseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$refreshV2UseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RefreshV2UseCaseRef = AutoDisposeProviderRef<RefreshV2UseCase>;
+String _$logoutV2UseCaseHash() => r'7463e101e79cb87357e2df6d377382533a105f09';
+
+/// v2 로그아웃 유스케이스 provider.
+///
+/// Copied from [logoutV2UseCase].
+@ProviderFor(logoutV2UseCase)
+final logoutV2UseCaseProvider = AutoDisposeProvider<LogoutV2UseCase>.internal(
+  logoutV2UseCase,
+  name: r'logoutV2UseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$logoutV2UseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LogoutV2UseCaseRef = AutoDisposeProviderRef<LogoutV2UseCase>;
+String _$meV2UseCaseHash() => r'df8e278446bd6cd63ad92d634b961539aca2bd2e';
+
+/// v2 내 정보 조회 유스케이스 provider.
+///
+/// Copied from [meV2UseCase].
+@ProviderFor(meV2UseCase)
+final meV2UseCaseProvider = AutoDisposeProvider<MeV2UseCase>.internal(
+  meV2UseCase,
+  name: r'meV2UseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$meV2UseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef MeV2UseCaseRef = AutoDisposeProviderRef<MeV2UseCase>;
+String _$changePasswordV2UseCaseHash() =>
+    r'428447fd0821142c9b1cf2f07da3d45d01a62f9e';
+
+/// v2 비밀번호 변경 유스케이스 provider.
+///
+/// Copied from [changePasswordV2UseCase].
+@ProviderFor(changePasswordV2UseCase)
+final changePasswordV2UseCaseProvider =
+    AutoDisposeProvider<ChangePasswordV2UseCase>.internal(
+      changePasswordV2UseCase,
+      name: r'changePasswordV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$changePasswordV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ChangePasswordV2UseCaseRef =
+    AutoDisposeProviderRef<ChangePasswordV2UseCase>;
+String _$requestProfileImageUploadUrlV2UseCaseHash() =>
+    r'941a951eabcde67806d5ecb7e22ca6d1278b20f1';
+
+/// v2 프로필 이미지 업로드 URL 발급 유스케이스 provider.
+///
+/// Copied from [requestProfileImageUploadUrlV2UseCase].
+@ProviderFor(requestProfileImageUploadUrlV2UseCase)
+final requestProfileImageUploadUrlV2UseCaseProvider =
+    AutoDisposeProvider<RequestProfileImageUploadUrlV2UseCase>.internal(
+      requestProfileImageUploadUrlV2UseCase,
+      name: r'requestProfileImageUploadUrlV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$requestProfileImageUploadUrlV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RequestProfileImageUploadUrlV2UseCaseRef =
+    AutoDisposeProviderRef<RequestProfileImageUploadUrlV2UseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
