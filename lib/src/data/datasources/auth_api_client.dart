@@ -91,6 +91,19 @@ final class AuthApiClient {
     return MeResponseDto.fromJson(payload);
   }
 
+  /// `/v2/me` PATCH 호출.
+  Future<MeResponseDto> updateProfileV2(
+    UpdateProfileV2RequestDto request, {
+    required String accessToken,
+  }) async {
+    final payload = await _patchV2(
+      '/v2/me',
+      body: request.toJson(),
+      accessToken: accessToken,
+    );
+    return MeResponseDto.fromJson(payload);
+  }
+
   /// `/v2/me/password` 호출.
   Future<ChangePasswordV2ResponseDto> changePasswordV2(
     ChangePasswordV2RequestDto request, {
@@ -115,6 +128,19 @@ final class AuthApiClient {
       accessToken: accessToken,
     );
     return ProfileImageUploadUrlV2ResponseDto.fromJson(payload);
+  }
+
+  /// `/v2/users/lookup` 호출.
+  Future<UserLookupV2ResponseDto> lookupUserByPublicCodeV2(
+    String code, {
+    required String accessToken,
+  }) async {
+    final payload = await _getV2(
+      '/v2/users/lookup',
+      accessToken: accessToken,
+      queryParameters: {'code': code},
+    );
+    return UserLookupV2ResponseDto.fromJson(payload);
   }
 
   Future<Map<String, dynamic>> _post(
@@ -168,8 +194,13 @@ final class AuthApiClient {
   Future<Map<String, dynamic>> _getV2(
     String path, {
     required String accessToken,
+    Map<String, String>? queryParameters,
   }) async {
-    final uri = Uri.parse('$baseUrl$path');
+    final baseUri = Uri.parse('$baseUrl$path');
+    final uri =
+        queryParameters == null
+            ? baseUri
+            : baseUri.replace(queryParameters: queryParameters);
     final response = await _client.get(uri, headers: _headersV2(accessToken));
     return _decodeEnvelopeV2(response);
   }

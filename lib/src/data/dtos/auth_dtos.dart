@@ -234,3 +234,33 @@ abstract class ProfileImageUploadUrlV2ResponseDto
     Map<String, dynamic> json,
   ) => _$ProfileImageUploadUrlV2ResponseDtoFromJson(json);
 }
+
+/// v2 프로필 수정 요청 DTO.
+@freezed
+abstract class UpdateProfileV2RequestDto with _$UpdateProfileV2RequestDto {
+  const factory UpdateProfileV2RequestDto({
+    String? nickname,
+    String? profileImageUrl,
+  }) = _UpdateProfileV2RequestDto;
+
+  /// JSON 역직렬화.
+  factory UpdateProfileV2RequestDto.fromJson(Map<String, dynamic> json) =>
+      _$UpdateProfileV2RequestDtoFromJson(json);
+}
+
+/// v2 사용자 조회 응답 DTO.
+@freezed
+abstract class UserLookupV2ResponseDto with _$UserLookupV2ResponseDto {
+  const factory UserLookupV2ResponseDto({
+    required String id,
+    required String username,
+    required AuthRoleDto role,
+    String? publicCode,
+    String? nickname,
+    String? profileImageUrl,
+  }) = _UserLookupV2ResponseDto;
+
+  /// JSON 역직렬화.
+  factory UserLookupV2ResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$UserLookupV2ResponseDtoFromJson(json);
+}

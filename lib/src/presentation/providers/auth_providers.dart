@@ -102,6 +102,12 @@ MeV2UseCase meV2UseCase(Ref ref) {
   return MeV2UseCase(ref.watch(authRepositoryProvider));
 }
 
+/// v2 프로필 수정 유스케이스 provider.
+@riverpod
+UpdateProfileV2UseCase updateProfileV2UseCase(Ref ref) {
+  return UpdateProfileV2UseCase(ref.watch(authRepositoryProvider));
+}
+
 /// v2 비밀번호 변경 유스케이스 provider.
 @riverpod
 ChangePasswordV2UseCase changePasswordV2UseCase(Ref ref) {
@@ -116,4 +122,10 @@ RequestProfileImageUploadUrlV2UseCase requestProfileImageUploadUrlV2UseCase(
   return RequestProfileImageUploadUrlV2UseCase(
     ref.watch(authRepositoryProvider),
   );
+}
+
+/// v2 public code 사용자 조회 유스케이스 provider.
+@riverpod
+LookupUserByPublicCodeV2UseCase lookupUserByPublicCodeV2UseCase(Ref ref) {
+  return LookupUserByPublicCodeV2UseCase(ref.watch(authRepositoryProvider));
 }

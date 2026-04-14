@@ -163,6 +163,22 @@ final class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<AuthUser> updateProfileV2({
+    String? nickname,
+    String? profileImageUrl,
+  }) async {
+    final accessToken = await _requireAccessToken();
+    final response = await _apiClient.updateProfileV2(
+      UpdateProfileV2RequestDto(
+        nickname: nickname,
+        profileImageUrl: profileImageUrl,
+      ),
+      accessToken: accessToken,
+    );
+    return response.toDomain();
+  }
+
+  @override
   Future<bool> changePasswordV2({
     required String currentPassword,
     required String newPassword,
@@ -200,6 +216,16 @@ final class AuthRepositoryImpl implements AuthRepository {
     );
   }
 
+  @override
+  Future<AuthUser> lookupUserByPublicCodeV2({required String code}) async {
+    final accessToken = await _requireAccessToken();
+    final response = await _apiClient.lookupUserByPublicCodeV2(
+      code,
+      accessToken: accessToken,
+    );
+    return response.toDomain();
+  }
+
   /// 인증이 필요한 API 호출 전에 access token 존재 여부를 보장한다.
   Future<String> _requireAccessToken() async {
     final tokens = await _tokenStore.read();
@@ -230,6 +256,20 @@ extension on MeResponseDto {
       username: username,
       role: _mapRole(role),
       userTrack: userTrack,
+      publicCode: publicCode,
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
+  }
+}
+
+extension on UserLookupV2ResponseDto {
+  /// 사용자 lookup 응답 DTO -> 도메인 엔티티 변환.
+  AuthUser toDomain() {
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
       publicCode: publicCode,
       nickname: nickname,
       profileImageUrl: profileImageUrl,

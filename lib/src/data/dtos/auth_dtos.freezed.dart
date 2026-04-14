@@ -4374,4 +4374,548 @@ as int,
 
 }
 
+
+/// @nodoc
+mixin _$UpdateProfileV2RequestDto {
+
+ String? get nickname; String? get profileImageUrl;
+/// Create a copy of UpdateProfileV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateProfileV2RequestDtoCopyWith<UpdateProfileV2RequestDto> get copyWith => _$UpdateProfileV2RequestDtoCopyWithImpl<UpdateProfileV2RequestDto>(this as UpdateProfileV2RequestDto, _$identity);
+
+  /// Serializes this UpdateProfileV2RequestDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileV2RequestDto&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nickname,profileImageUrl);
+
+@override
+String toString() {
+  return 'UpdateProfileV2RequestDto(nickname: $nickname, profileImageUrl: $profileImageUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdateProfileV2RequestDtoCopyWith<$Res>  {
+  factory $UpdateProfileV2RequestDtoCopyWith(UpdateProfileV2RequestDto value, $Res Function(UpdateProfileV2RequestDto) _then) = _$UpdateProfileV2RequestDtoCopyWithImpl;
+@useResult
+$Res call({
+ String? nickname, String? profileImageUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateProfileV2RequestDtoCopyWithImpl<$Res>
+    implements $UpdateProfileV2RequestDtoCopyWith<$Res> {
+  _$UpdateProfileV2RequestDtoCopyWithImpl(this._self, this._then);
+
+  final UpdateProfileV2RequestDto _self;
+  final $Res Function(UpdateProfileV2RequestDto) _then;
+
+/// Create a copy of UpdateProfileV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
+  return _then(_self.copyWith(
+nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UpdateProfileV2RequestDto].
+extension UpdateProfileV2RequestDtoPatterns on UpdateProfileV2RequestDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UpdateProfileV2RequestDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UpdateProfileV2RequestDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UpdateProfileV2RequestDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? nickname,  String? profileImageUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto() when $default != null:
+return $default(_that.nickname,_that.profileImageUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? nickname,  String? profileImageUrl)  $default,) {final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto():
+return $default(_that.nickname,_that.profileImageUrl);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? nickname,  String? profileImageUrl)?  $default,) {final _that = this;
+switch (_that) {
+case _UpdateProfileV2RequestDto() when $default != null:
+return $default(_that.nickname,_that.profileImageUrl);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _UpdateProfileV2RequestDto implements UpdateProfileV2RequestDto {
+  const _UpdateProfileV2RequestDto({this.nickname, this.profileImageUrl});
+  factory _UpdateProfileV2RequestDto.fromJson(Map<String, dynamic> json) => _$UpdateProfileV2RequestDtoFromJson(json);
+
+@override final  String? nickname;
+@override final  String? profileImageUrl;
+
+/// Create a copy of UpdateProfileV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UpdateProfileV2RequestDtoCopyWith<_UpdateProfileV2RequestDto> get copyWith => __$UpdateProfileV2RequestDtoCopyWithImpl<_UpdateProfileV2RequestDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UpdateProfileV2RequestDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateProfileV2RequestDto&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nickname,profileImageUrl);
+
+@override
+String toString() {
+  return 'UpdateProfileV2RequestDto(nickname: $nickname, profileImageUrl: $profileImageUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UpdateProfileV2RequestDtoCopyWith<$Res> implements $UpdateProfileV2RequestDtoCopyWith<$Res> {
+  factory _$UpdateProfileV2RequestDtoCopyWith(_UpdateProfileV2RequestDto value, $Res Function(_UpdateProfileV2RequestDto) _then) = __$UpdateProfileV2RequestDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String? nickname, String? profileImageUrl
+});
+
+
+
+
+}
+/// @nodoc
+class __$UpdateProfileV2RequestDtoCopyWithImpl<$Res>
+    implements _$UpdateProfileV2RequestDtoCopyWith<$Res> {
+  __$UpdateProfileV2RequestDtoCopyWithImpl(this._self, this._then);
+
+  final _UpdateProfileV2RequestDto _self;
+  final $Res Function(_UpdateProfileV2RequestDto) _then;
+
+/// Create a copy of UpdateProfileV2RequestDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
+  return _then(_UpdateProfileV2RequestDto(
+nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$UserLookupV2ResponseDto {
+
+ String get id; String get username; AuthRoleDto get role; String? get publicCode; String? get nickname; String? get profileImageUrl;
+/// Create a copy of UserLookupV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UserLookupV2ResponseDtoCopyWith<UserLookupV2ResponseDto> get copyWith => _$UserLookupV2ResponseDtoCopyWithImpl<UserLookupV2ResponseDto>(this as UserLookupV2ResponseDto, _$identity);
+
+  /// Serializes this UserLookupV2ResponseDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserLookupV2ResponseDto&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role)&&(identical(other.publicCode, publicCode) || other.publicCode == publicCode)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,username,role,publicCode,nickname,profileImageUrl);
+
+@override
+String toString() {
+  return 'UserLookupV2ResponseDto(id: $id, username: $username, role: $role, publicCode: $publicCode, nickname: $nickname, profileImageUrl: $profileImageUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UserLookupV2ResponseDtoCopyWith<$Res>  {
+  factory $UserLookupV2ResponseDtoCopyWith(UserLookupV2ResponseDto value, $Res Function(UserLookupV2ResponseDto) _then) = _$UserLookupV2ResponseDtoCopyWithImpl;
+@useResult
+$Res call({
+ String id, String username, AuthRoleDto role, String? publicCode, String? nickname, String? profileImageUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$UserLookupV2ResponseDtoCopyWithImpl<$Res>
+    implements $UserLookupV2ResponseDtoCopyWith<$Res> {
+  _$UserLookupV2ResponseDtoCopyWithImpl(this._self, this._then);
+
+  final UserLookupV2ResponseDto _self;
+  final $Res Function(UserLookupV2ResponseDto) _then;
+
+/// Create a copy of UserLookupV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? username = null,Object? role = null,Object? publicCode = freezed,Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as AuthRoleDto,publicCode: freezed == publicCode ? _self.publicCode : publicCode // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UserLookupV2ResponseDto].
+extension UserLookupV2ResponseDtoPatterns on UserLookupV2ResponseDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UserLookupV2ResponseDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UserLookupV2ResponseDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UserLookupV2ResponseDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String username,  AuthRoleDto role,  String? publicCode,  String? nickname,  String? profileImageUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto() when $default != null:
+return $default(_that.id,_that.username,_that.role,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String username,  AuthRoleDto role,  String? publicCode,  String? nickname,  String? profileImageUrl)  $default,) {final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto():
+return $default(_that.id,_that.username,_that.role,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String username,  AuthRoleDto role,  String? publicCode,  String? nickname,  String? profileImageUrl)?  $default,) {final _that = this;
+switch (_that) {
+case _UserLookupV2ResponseDto() when $default != null:
+return $default(_that.id,_that.username,_that.role,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _UserLookupV2ResponseDto implements UserLookupV2ResponseDto {
+  const _UserLookupV2ResponseDto({required this.id, required this.username, required this.role, this.publicCode, this.nickname, this.profileImageUrl});
+  factory _UserLookupV2ResponseDto.fromJson(Map<String, dynamic> json) => _$UserLookupV2ResponseDtoFromJson(json);
+
+@override final  String id;
+@override final  String username;
+@override final  AuthRoleDto role;
+@override final  String? publicCode;
+@override final  String? nickname;
+@override final  String? profileImageUrl;
+
+/// Create a copy of UserLookupV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UserLookupV2ResponseDtoCopyWith<_UserLookupV2ResponseDto> get copyWith => __$UserLookupV2ResponseDtoCopyWithImpl<_UserLookupV2ResponseDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UserLookupV2ResponseDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserLookupV2ResponseDto&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role)&&(identical(other.publicCode, publicCode) || other.publicCode == publicCode)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,username,role,publicCode,nickname,profileImageUrl);
+
+@override
+String toString() {
+  return 'UserLookupV2ResponseDto(id: $id, username: $username, role: $role, publicCode: $publicCode, nickname: $nickname, profileImageUrl: $profileImageUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UserLookupV2ResponseDtoCopyWith<$Res> implements $UserLookupV2ResponseDtoCopyWith<$Res> {
+  factory _$UserLookupV2ResponseDtoCopyWith(_UserLookupV2ResponseDto value, $Res Function(_UserLookupV2ResponseDto) _then) = __$UserLookupV2ResponseDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String username, AuthRoleDto role, String? publicCode, String? nickname, String? profileImageUrl
+});
+
+
+
+
+}
+/// @nodoc
+class __$UserLookupV2ResponseDtoCopyWithImpl<$Res>
+    implements _$UserLookupV2ResponseDtoCopyWith<$Res> {
+  __$UserLookupV2ResponseDtoCopyWithImpl(this._self, this._then);
+
+  final _UserLookupV2ResponseDto _self;
+  final $Res Function(_UserLookupV2ResponseDto) _then;
+
+/// Create a copy of UserLookupV2ResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? username = null,Object? role = null,Object? publicCode = freezed,Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
+  return _then(_UserLookupV2ResponseDto(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as AuthRoleDto,publicCode: freezed == publicCode ? _self.publicCode : publicCode // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 // dart format on

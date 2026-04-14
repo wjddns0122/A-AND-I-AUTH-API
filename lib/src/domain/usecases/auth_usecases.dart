@@ -92,6 +92,23 @@ final class MeV2UseCase {
   Future<AuthUser> call() => _repository.meV2();
 }
 
+/// v2 프로필 수정 유스케이스.
+final class UpdateProfileV2UseCase {
+  const UpdateProfileV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthUser> call({
+    String? nickname,
+    String? profileImageUrl,
+  }) {
+    return _repository.updateProfileV2(
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
+  }
+}
+
 /// v2 비밀번호 변경 유스케이스.
 final class ChangePasswordV2UseCase {
   const ChangePasswordV2UseCase(this._repository);
@@ -123,5 +140,16 @@ final class RequestProfileImageUploadUrlV2UseCase {
       contentType: contentType,
       fileName: fileName,
     );
+  }
+}
+
+/// v2 public code 기반 사용자 조회 유스케이스.
+final class LookupUserByPublicCodeV2UseCase {
+  const LookupUserByPublicCodeV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthUser> call({required String code}) {
+    return _repository.lookupUserByPublicCodeV2(code: code);
   }
 }

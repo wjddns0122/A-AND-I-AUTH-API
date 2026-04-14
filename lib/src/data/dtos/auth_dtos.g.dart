@@ -229,3 +229,39 @@ Map<String, dynamic> _$ProfileImageUploadUrlV2ResponseDtoToJson(
   'objectKey': instance.objectKey,
   'expiresInSeconds': instance.expiresInSeconds,
 };
+
+_UpdateProfileV2RequestDto _$UpdateProfileV2RequestDtoFromJson(
+  Map<String, dynamic> json,
+) => _UpdateProfileV2RequestDto(
+  nickname: json['nickname'] as String?,
+  profileImageUrl: json['profileImageUrl'] as String?,
+);
+
+Map<String, dynamic> _$UpdateProfileV2RequestDtoToJson(
+  _UpdateProfileV2RequestDto instance,
+) => <String, dynamic>{
+  'nickname': instance.nickname,
+  'profileImageUrl': instance.profileImageUrl,
+};
+
+_UserLookupV2ResponseDto _$UserLookupV2ResponseDtoFromJson(
+  Map<String, dynamic> json,
+) => _UserLookupV2ResponseDto(
+  id: json['id'] as String,
+  username: json['username'] as String,
+  role: $enumDecode(_$AuthRoleDtoEnumMap, json['role']),
+  publicCode: json['publicCode'] as String?,
+  nickname: json['nickname'] as String?,
+  profileImageUrl: json['profileImageUrl'] as String?,
+);
+
+Map<String, dynamic> _$UserLookupV2ResponseDtoToJson(
+  _UserLookupV2ResponseDto instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'username': instance.username,
+  'role': _$AuthRoleDtoEnumMap[instance.role]!,
+  'publicCode': instance.publicCode,
+  'nickname': instance.nickname,
+  'profileImageUrl': instance.profileImageUrl,
+};

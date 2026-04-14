@@ -258,6 +258,28 @@ final meV2UseCaseProvider = AutoDisposeProvider<MeV2UseCase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MeV2UseCaseRef = AutoDisposeProviderRef<MeV2UseCase>;
+String _$updateProfileV2UseCaseHash() =>
+    r'706db5d008e6f5ddfe65405ffe89cc8a1c77e089';
+
+/// v2 프로필 수정 유스케이스 provider.
+///
+/// Copied from [updateProfileV2UseCase].
+@ProviderFor(updateProfileV2UseCase)
+final updateProfileV2UseCaseProvider =
+    AutoDisposeProvider<UpdateProfileV2UseCase>.internal(
+      updateProfileV2UseCase,
+      name: r'updateProfileV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$updateProfileV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UpdateProfileV2UseCaseRef =
+    AutoDisposeProviderRef<UpdateProfileV2UseCase>;
 String _$changePasswordV2UseCaseHash() =>
     r'428447fd0821142c9b1cf2f07da3d45d01a62f9e';
 
@@ -302,5 +324,27 @@ final requestProfileImageUploadUrlV2UseCaseProvider =
 // ignore: unused_element
 typedef RequestProfileImageUploadUrlV2UseCaseRef =
     AutoDisposeProviderRef<RequestProfileImageUploadUrlV2UseCase>;
+String _$lookupUserByPublicCodeV2UseCaseHash() =>
+    r'8a07b89b5a0138a6dcd0eb9819b79efc9a164486';
+
+/// v2 public code 사용자 조회 유스케이스 provider.
+///
+/// Copied from [lookupUserByPublicCodeV2UseCase].
+@ProviderFor(lookupUserByPublicCodeV2UseCase)
+final lookupUserByPublicCodeV2UseCaseProvider =
+    AutoDisposeProvider<LookupUserByPublicCodeV2UseCase>.internal(
+      lookupUserByPublicCodeV2UseCase,
+      name: r'lookupUserByPublicCodeV2UseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$lookupUserByPublicCodeV2UseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LookupUserByPublicCodeV2UseCaseRef =
+    AutoDisposeProviderRef<LookupUserByPublicCodeV2UseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

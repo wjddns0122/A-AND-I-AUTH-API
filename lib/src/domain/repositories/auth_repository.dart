@@ -39,6 +39,12 @@ abstract interface class AuthRepository {
   /// v2 내 사용자 정보를 조회한다.
   Future<AuthUser> meV2();
 
+  /// v2 사용자 프로필을 수정한다.
+  Future<AuthUser> updateProfileV2({
+    String? nickname,
+    String? profileImageUrl,
+  });
+
   /// v2 비밀번호를 변경한다.
   Future<bool> changePasswordV2({
     required String currentPassword,
@@ -49,5 +55,10 @@ abstract interface class AuthRepository {
   Future<AuthProfileImageUpload> requestProfileImageUploadUrlV2({
     required String contentType,
     required String fileName,
+  });
+
+  /// v2 public code로 사용자를 조회한다.
+  Future<AuthUser> lookupUserByPublicCodeV2({
+    required String code,
   });
 }
