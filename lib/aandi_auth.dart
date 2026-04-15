@@ -5,6 +5,7 @@
 library;
 
 export 'src/domain/entities/auth_role.dart';
+export 'src/domain/entities/auth_profile_image_upload.dart';
 export 'src/domain/entities/auth_session.dart';
 export 'src/domain/entities/auth_tokens.dart';
 export 'src/domain/entities/auth_user.dart';

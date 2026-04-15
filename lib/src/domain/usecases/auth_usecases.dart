@@ -1,3 +1,4 @@
+import '../entities/auth_profile_image_upload.dart';
 import '../entities/auth_session.dart';
 import '../entities/auth_user.dart';
 import '../repositories/auth_repository.dart';
@@ -48,4 +49,144 @@ final class MeUseCase {
 
   /// 토큰 기반으로 내 사용자 프로필을 가져온다.
   Future<AuthUser> call() => _repository.me();
+}
+
+/// v2 로그인 유스케이스.
+final class LoginV2UseCase {
+  const LoginV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthSession> call({
+    required String username,
+    required String password,
+  }) {
+    return _repository.loginV2(username: username, password: password);
+  }
+}
+
+/// v2 계정 활성화 유스케이스.
+final class ActivateV2UseCase {
+  const ActivateV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<bool> call({
+    required String token,
+    required String password,
+    required String username,
+  }) {
+    return _repository.activateV2(
+      token: token,
+      password: password,
+      username: username,
+    );
+  }
+}
+
+/// v2 access token 재발급 유스케이스.
+final class RefreshV2UseCase {
+  const RefreshV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<String> call() => _repository.refreshV2();
+}
+
+/// v2 로그아웃 유스케이스.
+final class LogoutV2UseCase {
+  const LogoutV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<void> call() => _repository.logoutV2();
+}
+
+/// v2 내 정보 조회 유스케이스.
+final class MeV2UseCase {
+  const MeV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthUser> call() => _repository.meV2();
+}
+
+/// v2 프로필 수정 유스케이스.
+final class UpdateProfileV2UseCase {
+  const UpdateProfileV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthUser> call({
+    String? nickname,
+    String? profileImageUrl,
+  }) {
+    return _repository.updateProfileV2(
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
+  }
+}
+
+/// v2 비밀번호 변경 유스케이스.
+final class ChangePasswordV2UseCase {
+  const ChangePasswordV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<bool> call({
+    required String currentPassword,
+    required String newPassword,
+  }) {
+    return _repository.changePasswordV2(
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    );
+  }
+}
+
+/// v2 프로필 이미지 업로드 URL 발급 유스케이스.
+final class RequestProfileImageUploadUrlV2UseCase {
+  const RequestProfileImageUploadUrlV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthProfileImageUpload> call({
+    required String contentType,
+    required String fileName,
+  }) {
+    return _repository.requestProfileImageUploadUrlV2(
+      contentType: contentType,
+      fileName: fileName,
+    );
+  }
+}
+
+/// v2 public code 기반 사용자 조회 유스케이스.
+final class LookupUserByPublicCodeV2UseCase {
+  const LookupUserByPublicCodeV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<AuthUser> call({required String code}) {
+    return _repository.lookupUserByPublicCodeV2(code: code);
+  }
+}
+
+/// v2 ping 조회 유스케이스.
+final class PingV2UseCase {
+  const PingV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<Map<String, String>> call() => _repository.pingV2();
+}
+
+/// v2 ping error 조회 유스케이스.
+final class PingErrorV2UseCase {
+  const PingErrorV2UseCase(this._repository);
+
+  final AuthRepository _repository;
+
+  Future<String> call() => _repository.pingErrorV2();
 }

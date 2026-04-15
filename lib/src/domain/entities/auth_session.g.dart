@@ -9,7 +9,12 @@ part of 'auth_session.dart';
 _AuthSession _$AuthSessionFromJson(Map<String, dynamic> json) => _AuthSession(
   user: AuthUser.fromJson(json['user'] as Map<String, dynamic>),
   tokens: AuthTokens.fromJson(json['tokens'] as Map<String, dynamic>),
+  forcePasswordChange: json['forcePasswordChange'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$AuthSessionToJson(_AuthSession instance) =>
-    <String, dynamic>{'user': instance.user, 'tokens': instance.tokens};
+    <String, dynamic>{
+      'user': instance.user,
+      'tokens': instance.tokens,
+      'forcePasswordChange': instance.forcePasswordChange,
+    };
