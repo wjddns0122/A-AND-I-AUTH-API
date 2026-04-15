@@ -1,3 +1,4 @@
+import '../../domain/entities/auth_profile_image_upload.dart';
 import '../../domain/entities/auth_role.dart';
 import '../../domain/entities/auth_session.dart';
 import '../../domain/entities/auth_tokens.dart';
@@ -34,7 +35,11 @@ final class AuthRepositoryImpl implements AuthRepository {
     );
     await _tokenStore.save(tokens);
 
-    return AuthSession(user: response.user.toDomain(), tokens: tokens);
+    return AuthSession(
+      user: response.user.toDomain(),
+      tokens: tokens,
+      forcePasswordChange: response.forcePasswordChange,
+    );
   }
 
   @override
@@ -88,13 +93,40 @@ final class AuthRepositoryImpl implements AuthRepository {
 
 extension on LoginUserDto {
   AuthUser toDomain() {
-    return AuthUser(id: id, username: username, role: _mapRole(role));
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
+      publicCode: publicCode,
+    );
   }
 }
 
 extension on MeResponseDto {
   AuthUser toDomain() {
-    return AuthUser(id: id, username: username, role: _mapRole(role));
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
+      userTrack: userTrack,
+      publicCode: publicCode,
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
+  }
+}
+
+extension on UserLookupV2ResponseDto {
+  /// 사용자 lookup 응답 DTO -> 도메인 엔티티 변환.
+  AuthUser toDomain() {
+    return AuthUser(
+      id: id,
+      username: username,
+      role: _mapRole(role),
+      publicCode: publicCode,
+      nickname: nickname,
+      profileImageUrl: profileImageUrl,
+    );
   }
 }
 

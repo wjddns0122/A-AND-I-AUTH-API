@@ -11,10 +11,18 @@ abstract class AuthUser with _$AuthUser {
   /// [id] 서버 사용자 식별자.
   /// [username] 로그인/표시용 계정명.
   /// [role] 권한 레벨.
+  /// [userTrack] 사용자 트랙.
+  /// [publicCode] 사용자 공개 코드.
+  /// [nickname] 사용자 닉네임.
+  /// [profileImageUrl] 프로필 이미지 URL.
   const factory AuthUser({
     required String id,
     required String username,
     required AuthRole role,
+    String? userTrack,
+    String? publicCode,
+    String? nickname,
+    String? profileImageUrl,
   }) = _AuthUser;
 
   factory AuthUser.fromJson(Map<String, dynamic> json) =>

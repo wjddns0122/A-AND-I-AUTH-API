@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthUser {
 
- String get id; String get username; AuthRole get role;
+ String get id; String get username; AuthRole get role; String? get userTrack; String? get publicCode; String? get nickname; String? get profileImageUrl;
 /// Create a copy of AuthUser
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AuthUserCopyWith<AuthUser> get copyWith => _$AuthUserCopyWithImpl<AuthUser>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthUser&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthUser&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role)&&(identical(other.userTrack, userTrack) || other.userTrack == userTrack)&&(identical(other.publicCode, publicCode) || other.publicCode == publicCode)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,username,role);
+int get hashCode => Object.hash(runtimeType,id,username,role,userTrack,publicCode,nickname,profileImageUrl);
 
 @override
 String toString() {
-  return 'AuthUser(id: $id, username: $username, role: $role)';
+  return 'AuthUser(id: $id, username: $username, role: $role, userTrack: $userTrack, publicCode: $publicCode, nickname: $nickname, profileImageUrl: $profileImageUrl)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AuthUserCopyWith<$Res>  {
   factory $AuthUserCopyWith(AuthUser value, $Res Function(AuthUser) _then) = _$AuthUserCopyWithImpl;
 @useResult
 $Res call({
- String id, String username, AuthRole role
+ String id, String username, AuthRole role, String? userTrack, String? publicCode, String? nickname, String? profileImageUrl
 });
 
 
@@ -65,12 +65,16 @@ class _$AuthUserCopyWithImpl<$Res>
 
 /// Create a copy of AuthUser
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? username = null,Object? role = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? username = null,Object? role = null,Object? userTrack = freezed,Object? publicCode = freezed,Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
-as AuthRole,
+as AuthRole,userTrack: freezed == userTrack ? _self.userTrack : userTrack // ignore: cast_nullable_to_non_nullable
+as String?,publicCode: freezed == publicCode ? _self.publicCode : publicCode // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -155,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String username,  AuthRole role)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String username,  AuthRole role,  String? userTrack,  String? publicCode,  String? nickname,  String? profileImageUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AuthUser() when $default != null:
-return $default(_that.id,_that.username,_that.role);case _:
+return $default(_that.id,_that.username,_that.role,_that.userTrack,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
   return orElse();
 
 }
@@ -176,10 +180,10 @@ return $default(_that.id,_that.username,_that.role);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String username,  AuthRole role)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String username,  AuthRole role,  String? userTrack,  String? publicCode,  String? nickname,  String? profileImageUrl)  $default,) {final _that = this;
 switch (_that) {
 case _AuthUser():
-return $default(_that.id,_that.username,_that.role);case _:
+return $default(_that.id,_that.username,_that.role,_that.userTrack,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +200,10 @@ return $default(_that.id,_that.username,_that.role);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String username,  AuthRole role)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String username,  AuthRole role,  String? userTrack,  String? publicCode,  String? nickname,  String? profileImageUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _AuthUser() when $default != null:
-return $default(_that.id,_that.username,_that.role);case _:
+return $default(_that.id,_that.username,_that.role,_that.userTrack,_that.publicCode,_that.nickname,_that.profileImageUrl);case _:
   return null;
 
 }
@@ -211,12 +215,16 @@ return $default(_that.id,_that.username,_that.role);case _:
 @JsonSerializable()
 
 class _AuthUser implements AuthUser {
-  const _AuthUser({required this.id, required this.username, required this.role});
+  const _AuthUser({required this.id, required this.username, required this.role, this.userTrack, this.publicCode, this.nickname, this.profileImageUrl});
   factory _AuthUser.fromJson(Map<String, dynamic> json) => _$AuthUserFromJson(json);
 
 @override final  String id;
 @override final  String username;
 @override final  AuthRole role;
+@override final  String? userTrack;
+@override final  String? publicCode;
+@override final  String? nickname;
+@override final  String? profileImageUrl;
 
 /// Create a copy of AuthUser
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthUser&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthUser&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.role, role) || other.role == role)&&(identical(other.userTrack, userTrack) || other.userTrack == userTrack)&&(identical(other.publicCode, publicCode) || other.publicCode == publicCode)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,username,role);
+int get hashCode => Object.hash(runtimeType,id,username,role,userTrack,publicCode,nickname,profileImageUrl);
 
 @override
 String toString() {
-  return 'AuthUser(id: $id, username: $username, role: $role)';
+  return 'AuthUser(id: $id, username: $username, role: $role, userTrack: $userTrack, publicCode: $publicCode, nickname: $nickname, profileImageUrl: $profileImageUrl)';
 }
 
 
@@ -251,7 +259,7 @@ abstract mixin class _$AuthUserCopyWith<$Res> implements $AuthUserCopyWith<$Res>
   factory _$AuthUserCopyWith(_AuthUser value, $Res Function(_AuthUser) _then) = __$AuthUserCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String username, AuthRole role
+ String id, String username, AuthRole role, String? userTrack, String? publicCode, String? nickname, String? profileImageUrl
 });
 
 
@@ -268,12 +276,16 @@ class __$AuthUserCopyWithImpl<$Res>
 
 /// Create a copy of AuthUser
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? username = null,Object? role = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? username = null,Object? role = null,Object? userTrack = freezed,Object? publicCode = freezed,Object? nickname = freezed,Object? profileImageUrl = freezed,}) {
   return _then(_AuthUser(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
-as AuthRole,
+as AuthRole,userTrack: freezed == userTrack ? _self.userTrack : userTrack // ignore: cast_nullable_to_non_nullable
+as String?,publicCode: freezed == publicCode ? _self.publicCode : publicCode // ignore: cast_nullable_to_non_nullable
+as String?,nickname: freezed == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
+as String?,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

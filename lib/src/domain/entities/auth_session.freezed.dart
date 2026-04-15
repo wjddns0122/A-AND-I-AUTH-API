@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthSession {
 
- AuthUser get user; AuthTokens get tokens;
+ AuthUser get user; AuthTokens get tokens; bool get forcePasswordChange;
 /// Create a copy of AuthSession
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AuthSessionCopyWith<AuthSession> get copyWith => _$AuthSessionCopyWithImpl<Auth
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthSession&&(identical(other.user, user) || other.user == user)&&(identical(other.tokens, tokens) || other.tokens == tokens));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthSession&&(identical(other.user, user) || other.user == user)&&(identical(other.tokens, tokens) || other.tokens == tokens)&&(identical(other.forcePasswordChange, forcePasswordChange) || other.forcePasswordChange == forcePasswordChange));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,user,tokens);
+int get hashCode => Object.hash(runtimeType,user,tokens,forcePasswordChange);
 
 @override
 String toString() {
-  return 'AuthSession(user: $user, tokens: $tokens)';
+  return 'AuthSession(user: $user, tokens: $tokens, forcePasswordChange: $forcePasswordChange)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AuthSessionCopyWith<$Res>  {
   factory $AuthSessionCopyWith(AuthSession value, $Res Function(AuthSession) _then) = _$AuthSessionCopyWithImpl;
 @useResult
 $Res call({
- AuthUser user, AuthTokens tokens
+ AuthUser user, AuthTokens tokens, bool forcePasswordChange
 });
 
 
@@ -65,11 +65,12 @@ class _$AuthSessionCopyWithImpl<$Res>
 
 /// Create a copy of AuthSession
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? tokens = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? tokens = null,Object? forcePasswordChange = null,}) {
   return _then(_self.copyWith(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as AuthUser,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
-as AuthTokens,
+as AuthTokens,forcePasswordChange: null == forcePasswordChange ? _self.forcePasswordChange : forcePasswordChange // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 /// Create a copy of AuthSession
@@ -172,10 +173,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AuthUser user,  AuthTokens tokens)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AuthUser user,  AuthTokens tokens,  bool forcePasswordChange)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AuthSession() when $default != null:
-return $default(_that.user,_that.tokens);case _:
+return $default(_that.user,_that.tokens,_that.forcePasswordChange);case _:
   return orElse();
 
 }
@@ -193,10 +194,10 @@ return $default(_that.user,_that.tokens);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AuthUser user,  AuthTokens tokens)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AuthUser user,  AuthTokens tokens,  bool forcePasswordChange)  $default,) {final _that = this;
 switch (_that) {
 case _AuthSession():
-return $default(_that.user,_that.tokens);case _:
+return $default(_that.user,_that.tokens,_that.forcePasswordChange);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -213,10 +214,10 @@ return $default(_that.user,_that.tokens);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AuthUser user,  AuthTokens tokens)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AuthUser user,  AuthTokens tokens,  bool forcePasswordChange)?  $default,) {final _that = this;
 switch (_that) {
 case _AuthSession() when $default != null:
-return $default(_that.user,_that.tokens);case _:
+return $default(_that.user,_that.tokens,_that.forcePasswordChange);case _:
   return null;
 
 }
@@ -228,11 +229,12 @@ return $default(_that.user,_that.tokens);case _:
 @JsonSerializable()
 
 class _AuthSession implements AuthSession {
-  const _AuthSession({required this.user, required this.tokens});
+  const _AuthSession({required this.user, required this.tokens, this.forcePasswordChange = false});
   factory _AuthSession.fromJson(Map<String, dynamic> json) => _$AuthSessionFromJson(json);
 
 @override final  AuthUser user;
 @override final  AuthTokens tokens;
+@override@JsonKey() final  bool forcePasswordChange;
 
 /// Create a copy of AuthSession
 /// with the given fields replaced by the non-null parameter values.
@@ -247,16 +249,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthSession&&(identical(other.user, user) || other.user == user)&&(identical(other.tokens, tokens) || other.tokens == tokens));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthSession&&(identical(other.user, user) || other.user == user)&&(identical(other.tokens, tokens) || other.tokens == tokens)&&(identical(other.forcePasswordChange, forcePasswordChange) || other.forcePasswordChange == forcePasswordChange));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,user,tokens);
+int get hashCode => Object.hash(runtimeType,user,tokens,forcePasswordChange);
 
 @override
 String toString() {
-  return 'AuthSession(user: $user, tokens: $tokens)';
+  return 'AuthSession(user: $user, tokens: $tokens, forcePasswordChange: $forcePasswordChange)';
 }
 
 
@@ -267,7 +269,7 @@ abstract mixin class _$AuthSessionCopyWith<$Res> implements $AuthSessionCopyWith
   factory _$AuthSessionCopyWith(_AuthSession value, $Res Function(_AuthSession) _then) = __$AuthSessionCopyWithImpl;
 @override @useResult
 $Res call({
- AuthUser user, AuthTokens tokens
+ AuthUser user, AuthTokens tokens, bool forcePasswordChange
 });
 
 
@@ -284,11 +286,12 @@ class __$AuthSessionCopyWithImpl<$Res>
 
 /// Create a copy of AuthSession
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? tokens = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? tokens = null,Object? forcePasswordChange = null,}) {
   return _then(_AuthSession(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as AuthUser,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
-as AuthTokens,
+as AuthTokens,forcePasswordChange: null == forcePasswordChange ? _self.forcePasswordChange : forcePasswordChange // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

@@ -14,9 +14,11 @@ part 'auth_session.g.dart';
 abstract class AuthSession with _$AuthSession {
   /// [user] 현재 인증된 사용자.
   /// [tokens] 현재 유효한 토큰 세트.
+  /// [forcePasswordChange] 비밀번호 변경 강제 여부.
   const factory AuthSession({
     required AuthUser user,
     required AuthTokens tokens,
+    @Default(false) bool forcePasswordChange,
   }) = _AuthSession;
 
   factory AuthSession.fromJson(Map<String, dynamic> json) =>
