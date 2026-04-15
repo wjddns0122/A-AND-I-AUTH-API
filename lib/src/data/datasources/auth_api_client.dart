@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:aandi_api_endpoints/aandi_api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 import '../dtos/auth_dtos.dart';
@@ -45,25 +46,37 @@ final class AuthApiClient {
 
   /// `/v1/auth/login` 호출.
   Future<LoginResponseDto> login(LoginRequestDto request) async {
-    final payload = await _post('/v1/auth/login', body: request.toJson());
+    final payload = await _post(
+      AandiApiEndpointTemplate.login,
+      body: request.toJson(),
+    );
     return LoginResponseDto.fromJson(payload);
   }
 
   /// `/v1/auth/refresh` 호출.
   Future<RefreshResponseDto> refresh(RefreshRequestDto request) async {
-    final payload = await _post('/v1/auth/refresh', body: request.toJson());
+    final payload = await _post(
+      AandiApiEndpointTemplate.refreshToken,
+      body: request.toJson(),
+    );
     return RefreshResponseDto.fromJson(payload);
   }
 
   /// `/v1/auth/logout` 호출.
   Future<LogoutResponseDto> logout(LogoutRequestDto request) async {
-    final payload = await _post('/v1/auth/logout', body: request.toJson());
+    final payload = await _post(
+      AandiApiEndpointTemplate.logout,
+      body: request.toJson(),
+    );
     return LogoutResponseDto.fromJson(payload);
   }
 
   /// `/v1/me` 호출.
   Future<MeResponseDto> me({required String accessToken}) async {
-    final payload = await _get('/v1/me', accessToken: accessToken);
+    final payload = await _get(
+      AandiApiEndpointTemplate.me,
+      accessToken: accessToken,
+    );
     return MeResponseDto.fromJson(payload);
   }
 
@@ -173,7 +186,7 @@ final class AuthApiClient {
     required Map<String, dynamic> body,
     String? accessToken,
   }) async {
-    final uri = Uri.parse('$baseUrl$path');
+    final uri = Uri.parse(AandiApiUrlResolver.resolve(baseUrl, path));
     final response = await _client.post(
       uri,
       headers: _headers(accessToken),
@@ -183,7 +196,7 @@ final class AuthApiClient {
   }
 
   Future<Map<String, dynamic>> _get(String path, {String? accessToken}) async {
-    final uri = Uri.parse('$baseUrl$path');
+    final uri = Uri.parse(AandiApiUrlResolver.resolve(baseUrl, path));
     final response = await _client.get(uri, headers: _headers(accessToken));
     return _decodeEnvelope(response);
   }

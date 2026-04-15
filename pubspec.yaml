@@ -4,9 +4,11 @@ version: 0.1.0
 publish_to: none
 
 environment:
-  sdk: ^3.10.4
+  sdk: ^3.5.3
 
 dependencies:
+  aandi_api_endpoints:
+    path: ../aandi_api_endpoints
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   freezed_annotation: ^3.0.0
@@ -19,4 +21,3 @@ dev_dependencies:
   freezed: ^3.0.6
   json_serializable: ^6.9.0
   riverpod_generator: ^2.6.5
-
