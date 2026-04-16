@@ -4,11 +4,13 @@ version: 0.1.0
 publish_to: none
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.10.4
 
 dependencies:
-  aandi_api_endpoints:
-    path: ../aandi_api_endpoints
+  aandi_api_protocol:
+    git:
+      url: https://github.com/Team-AnI/A-AND-I-PROTOCOL-API.git
+      ref: main
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   freezed_annotation: ^3.0.0

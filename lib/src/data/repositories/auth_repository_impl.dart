@@ -29,70 +29,26 @@ final class AuthRepositoryImpl implements AuthRepository {
     required String username,
     required String password,
   }) async {
-    final response = await _apiClient.login(
-      LoginRequestDto(username: username, password: password),
-    );
-
-    // 로그인 성공 시 서버 토큰을 즉시 저장해 후속 요청에서 재사용한다.
-    final tokens = AuthTokens(
-      accessToken: response.accessToken,
-      refreshToken: response.refreshToken,
-      expiresIn: response.expiresIn,
-      tokenType: response.tokenType,
-    );
-    await _tokenStore.save(tokens);
-
-    return AuthSession(
-      user: response.user.toDomain(),
-      tokens: tokens,
-      forcePasswordChange: response.forcePasswordChange,
-    );
+    // 기본 로그인 동작은 v2 API를 사용하도록 고정한다.
+    return loginV2(username: username, password: password);
   }
 
   @override
   Future<String> refresh() async {
-    final current = await _tokenStore.read();
-    final refreshToken = current?.refreshToken;
-    // 재발급은 refresh token이 없으면 수행할 수 없다.
-    if (refreshToken == null || refreshToken.isEmpty) {
-      throw AuthApiException('Refresh token is missing. Please log in again.');
-    }
-
-    final response = await _apiClient.refresh(
-      RefreshRequestDto(refreshToken: refreshToken),
-    );
-
-    // refresh API가 새 refresh token을 주지 않으므로 기존 값을 유지한다.
-    final nextTokens = AuthTokens(
-      accessToken: response.accessToken,
-      refreshToken: refreshToken,
-      expiresIn: response.expiresIn,
-      tokenType: current?.tokenType,
-    );
-    await _tokenStore.save(nextTokens);
-
-    return nextTokens.accessToken;
+    // 기본 토큰 재발급 동작은 v2 API를 사용하도록 고정한다.
+    return refreshV2();
   }
 
   @override
   Future<void> logout() async {
-    final current = await _tokenStore.read();
-    final refreshToken = current?.refreshToken;
-    try {
-      if (refreshToken != null && refreshToken.isNotEmpty) {
-        await _apiClient.logout(LogoutRequestDto(refreshToken: refreshToken));
-      }
-    } finally {
-      // 서버 로그아웃 실패 여부와 무관하게 마지막에 로컬 토큰은 항상 정리한다.
-      await _tokenStore.clear();
-    }
+    // 기본 로그아웃 동작은 v2 API를 사용하도록 고정한다.
+    await logoutV2();
   }
 
   @override
   Future<AuthUser> me() async {
-    final accessToken = await _requireAccessToken();
-    final response = await _apiClient.me(accessToken: accessToken);
-    return response.toDomain();
+    // 기본 내 정보 조회 동작은 v2 API를 사용하도록 고정한다.
+    return meV2();
   }
 
   @override
