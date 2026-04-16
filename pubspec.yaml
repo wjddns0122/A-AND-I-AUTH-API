@@ -9,8 +9,8 @@ environment:
 dependencies:
   aandi_api_protocol:
     git:
-      url: git@github.com:Team-AnI/A-AND-I-PROTOCOL-API.git
-      ref: v0.1.0
+      url: https://github.com/Team-AnI/A-AND-I-PROTOCOL-API.git
+      ref: main
   riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   freezed_annotation: ^3.0.0
